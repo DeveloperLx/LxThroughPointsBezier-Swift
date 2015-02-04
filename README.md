@@ -47,4 +47,4 @@ Be careful
     You must give at least 1 point for drawing the curve.
 License
 -----------
-AFNetworking is available under the Apache License 2.0. See the LICENSE file for more info.
+LxThroughPointsBezier-Swift is available under the Apache License 2.0. See the LICENSE file for more info.
