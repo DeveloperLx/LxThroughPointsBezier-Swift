@@ -45,6 +45,10 @@ Be careful
 -----------
     The good bend level is about 0.6 ~ 0.8. The default and recommended value is 0.7.
     You must give at least 1 point for drawing the curve.
+Effect
+-----------
+*	![demo](demo.gif)	
+
 License
 -----------
 LxThroughPointsBezier-Swift is available under the Apache License 2.0. See the LICENSE file for more info.

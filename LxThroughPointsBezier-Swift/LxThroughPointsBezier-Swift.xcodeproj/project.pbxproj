@@ -13,18 +13,8 @@
 		35C2E35E1A768F2A007C1C1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35C2E35C1A768F2A007C1C1A /* Main.storyboard */; };
 		35C2E3601A768F2A007C1C1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35C2E35F1A768F2A007C1C1A /* Images.xcassets */; };
 		35C2E3631A768F2A007C1C1A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35C2E3611A768F2A007C1C1A /* LaunchScreen.xib */; };
-		35C2E36F1A768F2A007C1C1A /* LxThroughPointsBezier_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C2E36E1A768F2A007C1C1A /* LxThroughPointsBezier_SwiftTests.swift */; };
+		B63DA9521B4ACCC700B3C66B /* PointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63DA9511B4ACCC700B3C66B /* PointView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		35C2E3691A768F2A007C1C1A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 35C2E34B1A768F2A007C1C1A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 35C2E3521A768F2A007C1C1A;
-			remoteInfo = "LxThroughPointsBezier-Swift";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3594859E1A77E6AF0011B339 /* UIBezierPath+LxThroughPointsBezier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIBezierPath+LxThroughPointsBezier.swift"; path = "../../UIBezierPath+LxThroughPointsBezier.swift"; sourceTree = "<group>"; };
@@ -35,20 +25,11 @@
 		35C2E35D1A768F2A007C1C1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		35C2E35F1A768F2A007C1C1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		35C2E3621A768F2A007C1C1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		35C2E3681A768F2A007C1C1A /* LxThroughPointsBezier-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LxThroughPointsBezier-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		35C2E36D1A768F2A007C1C1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		35C2E36E1A768F2A007C1C1A /* LxThroughPointsBezier_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LxThroughPointsBezier_SwiftTests.swift; sourceTree = "<group>"; };
+		B63DA9511B4ACCC700B3C66B /* PointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		35C2E3501A768F2A007C1C1A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35C2E3651A768F2A007C1C1A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -62,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				35C2E3551A768F2A007C1C1A /* LxThroughPointsBezier-Swift */,
-				35C2E36B1A768F2A007C1C1A /* LxThroughPointsBezier-SwiftTests */,
 				35C2E3541A768F2A007C1C1A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				35C2E3531A768F2A007C1C1A /* LxThroughPointsBezier-Swift.app */,
-				35C2E3681A768F2A007C1C1A /* LxThroughPointsBezier-SwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,12 +58,10 @@
 		35C2E3551A768F2A007C1C1A /* LxThroughPointsBezier-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				3594859E1A77E6AF0011B339 /* UIBezierPath+LxThroughPointsBezier.swift */,
 				35C2E3581A768F2A007C1C1A /* AppDelegate.swift */,
 				35C2E35A1A768F2A007C1C1A /* ViewController.swift */,
-				3594859E1A77E6AF0011B339 /* UIBezierPath+LxThroughPointsBezier.swift */,
-				35C2E35C1A768F2A007C1C1A /* Main.storyboard */,
-				35C2E3611A768F2A007C1C1A /* LaunchScreen.xib */,
-				35C2E35F1A768F2A007C1C1A /* Images.xcassets */,
+				B63DA9511B4ACCC700B3C66B /* PointView.swift */,
 				35C2E3561A768F2A007C1C1A /* Supporting Files */,
 			);
 			path = "LxThroughPointsBezier-Swift";
@@ -93,24 +70,10 @@
 		35C2E3561A768F2A007C1C1A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				35C2E3611A768F2A007C1C1A /* LaunchScreen.xib */,
+				35C2E35C1A768F2A007C1C1A /* Main.storyboard */,
+				35C2E35F1A768F2A007C1C1A /* Images.xcassets */,
 				35C2E3571A768F2A007C1C1A /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		35C2E36B1A768F2A007C1C1A /* LxThroughPointsBezier-SwiftTests */ = {
-			isa = PBXGroup;
-			children = (
-				35C2E36E1A768F2A007C1C1A /* LxThroughPointsBezier_SwiftTests.swift */,
-				35C2E36C1A768F2A007C1C1A /* Supporting Files */,
-			);
-			path = "LxThroughPointsBezier-SwiftTests";
-			sourceTree = "<group>";
-		};
-		35C2E36C1A768F2A007C1C1A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				35C2E36D1A768F2A007C1C1A /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -135,24 +98,6 @@
 			productReference = 35C2E3531A768F2A007C1C1A /* LxThroughPointsBezier-Swift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		35C2E3671A768F2A007C1C1A /* LxThroughPointsBezier-SwiftTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 35C2E3751A768F2A007C1C1A /* Build configuration list for PBXNativeTarget "LxThroughPointsBezier-SwiftTests" */;
-			buildPhases = (
-				35C2E3641A768F2A007C1C1A /* Sources */,
-				35C2E3651A768F2A007C1C1A /* Frameworks */,
-				35C2E3661A768F2A007C1C1A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				35C2E36A1A768F2A007C1C1A /* PBXTargetDependency */,
-			);
-			name = "LxThroughPointsBezier-SwiftTests";
-			productName = "LxThroughPointsBezier-SwiftTests";
-			productReference = 35C2E3681A768F2A007C1C1A /* LxThroughPointsBezier-SwiftTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -164,10 +109,6 @@
 				TargetAttributes = {
 					35C2E3521A768F2A007C1C1A = {
 						CreatedOnToolsVersion = 6.1.1;
-					};
-					35C2E3671A768F2A007C1C1A = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = 35C2E3521A768F2A007C1C1A;
 					};
 				};
 			};
@@ -185,7 +126,6 @@
 			projectRoot = "";
 			targets = (
 				35C2E3521A768F2A007C1C1A /* LxThroughPointsBezier-Swift */,
-				35C2E3671A768F2A007C1C1A /* LxThroughPointsBezier-SwiftTests */,
 			);
 		};
 /* End PBXProject section */
@@ -201,13 +141,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		35C2E3661A768F2A007C1C1A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -218,26 +151,11 @@
 				35C2E35B1A768F2A007C1C1A /* ViewController.swift in Sources */,
 				35C2E3591A768F2A007C1C1A /* AppDelegate.swift in Sources */,
 				3594859F1A77E6AF0011B339 /* UIBezierPath+LxThroughPointsBezier.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35C2E3641A768F2A007C1C1A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35C2E36F1A768F2A007C1C1A /* LxThroughPointsBezier_SwiftTests.swift in Sources */,
+				B63DA9521B4ACCC700B3C66B /* PointView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		35C2E36A1A768F2A007C1C1A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 35C2E3521A768F2A007C1C1A /* LxThroughPointsBezier-Swift */;
-			targetProxy = 35C2E3691A768F2A007C1C1A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		35C2E35C1A768F2A007C1C1A /* Main.storyboard */ = {
@@ -360,40 +278,6 @@
 			};
 			name = Release;
 		};
-		35C2E3761A768F2A007C1C1A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "LxThroughPointsBezier-SwiftTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LxThroughPointsBezier-Swift.app/LxThroughPointsBezier-Swift";
-			};
-			name = Debug;
-		};
-		35C2E3771A768F2A007C1C1A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "LxThroughPointsBezier-SwiftTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LxThroughPointsBezier-Swift.app/LxThroughPointsBezier-Swift";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -411,15 +295,6 @@
 			buildConfigurations = (
 				35C2E3731A768F2A007C1C1A /* Debug */,
 				35C2E3741A768F2A007C1C1A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		35C2E3751A768F2A007C1C1A /* Build configuration list for PBXNativeTarget "LxThroughPointsBezier-SwiftTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35C2E3761A768F2A007C1C1A /* Debug */,
-				35C2E3771A768F2A007C1C1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

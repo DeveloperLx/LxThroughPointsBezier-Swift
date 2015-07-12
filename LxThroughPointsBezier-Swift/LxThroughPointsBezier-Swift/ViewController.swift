@@ -8,45 +8,11 @@ import UIKit
 class ViewController: UIViewController {
 
     let _curve = UIBezierPath()
-    var _points = [CGPoint]()
     let _shapeLayer = CAShapeLayer()
+    var _pointViewArray = [PointView]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let point1 = CGPoint(x: 30, y: 210)
-        let point2 = CGPoint(x: 90, y: 120)
-        let point3 = CGPoint(x: 120, y: 200)
-        let point4 = CGPoint(x: 160, y: 240)
-        let point5 = CGPoint(x: 210, y: 160)
-        let point6 = CGPoint(x: 240, y: 300)
-        let point7 = CGPoint(x: 290, y: 140)
-        
-        drawPoint(point1)
-        drawPoint(point2)
-        drawPoint(point3)
-        drawPoint(point4)
-        drawPoint(point5)
-        drawPoint(point6)
-        drawPoint(point7)
-
-        _points.append(point1)
-        _points.append(point2)
-        _points.append(point3)
-        _points.append(point4)
-        _points.append(point5)
-        _points.append(point6)
-        _points.append(point7)
-        
-        _curve.moveToPoint(point1)
-        _curve.addBezierThrough(points: _points)
-        
-        _shapeLayer.strokeColor = UIColor.blueColor().CGColor
-        _shapeLayer.fillColor = nil
-        _shapeLayer.lineWidth = 3
-        _shapeLayer.path = _curve.CGPath
-        _shapeLayer.lineCap = kCALineCapRound
-        view.layer.addSublayer(_shapeLayer)
         
         let slider = UISlider()
         slider.minimumValue = 0
@@ -56,36 +22,56 @@ class ViewController: UIViewController {
         slider.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(slider)
         
+        slider.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
         let sliderHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[slider]-|", options: .DirectionLeadingToTrailing, metrics: nil, views: ["slider":slider])
         let sliderVerticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-topMargin-[slider(==sliderHeight)]", options: .DirectionLeadingToTrailing, metrics: ["sliderHeight":6, "topMargin":60], views: ["slider":slider])
         
         view.addConstraints(sliderHorizontalConstraints)
         view.addConstraints(sliderVerticalConstraints)
-    }
-    
-    func drawPoint(point: CGPoint) {
-        let pointLayer = CALayer()
-        pointLayer.bounds = CGRect(x: 0, y: 0, width: 10, height: 10)
-        pointLayer.cornerRadius = 5
-        pointLayer.position = point
-        pointLayer.backgroundColor = UIColor.magentaColor().CGColor
-        pointLayer.opaque = true
-        view.layer.addSublayer(pointLayer)
+        
+        var pointArray = [CGPoint]()
+        
+        for i in 0 ..< 6 {
+        
+            let pointView = PointView.aInstance()
+            pointView.center = CGPoint(x: i * 60 + 30, y: 420)
+            pointView.dragCallBack = { [unowned self] (pointView: PointView) -> Void in
+            
+                self.sliderValueChanged(slider)
+            }
+            view.addSubview(pointView)
+            _pointViewArray.append(pointView)
+            
+            pointArray.append(pointView.center)
+        }
+        
+        _curve.moveToPoint(_pointViewArray.first!.center)
+        _curve.addBezierThrough(points: pointArray)
+        
+        _shapeLayer.strokeColor = UIColor.blueColor().CGColor
+        _shapeLayer.fillColor = nil
+        _shapeLayer.lineWidth = 3
+        _shapeLayer.path = _curve.CGPath
+        _shapeLayer.lineCap = kCALineCapRound
+        view.layer.addSublayer(_shapeLayer)
     }
     
     func sliderValueChanged(slider: UISlider) {
     
         _curve.removeAllPoints()
         _curve.contractionFactor = CGFloat(slider.value)
-        _curve.moveToPoint(_points[0])
-        _curve.addBezierThrough(points: _points)
+        
+        _curve.moveToPoint(_pointViewArray.first!.center)
+        
+        var pointArray = [CGPoint]()
+        for pointView in _pointViewArray {
+        
+            pointArray.append(pointView.center)
+        }
+        _curve.addBezierThrough(points: pointArray)
         
         _shapeLayer.path = _curve.CGPath
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
