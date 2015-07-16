@@ -19,7 +19,6 @@ class ViewController: UIViewController {
         slider.maximumValue = 1.4
         slider.value = 0.7
         slider.addTarget(self, action: "sliderValueChanged:", forControlEvents: .ValueChanged)
-        slider.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.addSubview(slider)
         
         slider.setTranslatesAutoresizingMaskIntoConstraints(false)
