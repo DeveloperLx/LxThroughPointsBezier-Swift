@@ -9,6 +9,7 @@ Support
 Usage
 -----------
 ###
+```swift
         var _points = [CGPoint]()
 
         let point1 = CGPoint(x: 30, y: 210)
@@ -41,6 +42,7 @@ Usage
         _shapeLayer.path = _curve.CGPath
         _shapeLayer.lineCap = kCALineCapRound
         view.layer.addSublayer(_shapeLayer)
+```
 Be careful            
 -----------
     The good bend level is about 0.6 ~ 0.8. The default and recommended value is 0.7.
