@@ -23,7 +23,7 @@ extension UIBezierPath {
     /**
         @param: points Points your bezier wants to through. You must give at least 1 point (different from current point) for drawing curve.
     */
-    func addBezierThrough(#points: [CGPoint]) {
+    func addBezierThrough(points: [CGPoint]) {
     
         assert(points.count > 0, "You must give at least 1 point for drawing the bezier.");
         
@@ -32,37 +32,37 @@ extension UIBezierPath {
             switch points.count {
             
             case 1:
-                addLineToPoint(points[0])
+                addLine(to: points[0])
             case 2:
-                addLineToPoint(points[1])
+                addLine(to: points[1])
             default:
                 break
             }
             return
         }
         
-        var previousPoint = CGPointZero
+        var previousPoint = CGPoint.zero
         
-        var previousCenterPoint = CGPointZero
-        var centerPoint = CGPointZero
+        var previousCenterPoint = CGPoint.zero
+        var centerPoint = CGPoint.zero
         var centerPointDistance = CGFloat()
         
         var obliqueAngle = CGFloat()
         
-        var previousControlPoint1 = CGPointZero
-        var previousControlPoint2 = CGPointZero
-        var controlPoint1 = CGPointZero
+        var previousControlPoint1 = CGPoint.zero
+        var previousControlPoint2 = CGPoint.zero
+        var controlPoint1 = CGPoint.zero
         
-        for var i = 0; i < points.count; i++ {
+        for i in 0 ..< points.count {
         
             let pointI = points[i]
             
             if i > 0 {
                 
-                previousCenterPoint = CenterPointOf(currentPoint, previousPoint)
-                centerPoint = CenterPointOf(previousPoint, pointI)
+                previousCenterPoint = CenterPointOf(point1: currentPoint, point2: previousPoint)
+                centerPoint = CenterPointOf(point1: previousPoint, point2: pointI)
                 
-                centerPointDistance = DistanceBetween(previousCenterPoint, centerPoint)
+                centerPointDistance = DistanceBetween(point1: previousCenterPoint, point2: centerPoint)
 
                 obliqueAngle = ObliqueAngleOfStraightThrough(point1:centerPoint, point2:previousCenterPoint)
                 
@@ -74,16 +74,16 @@ extension UIBezierPath {
             
             case 1 :
                 
-                addQuadCurveToPoint(previousPoint, controlPoint: previousControlPoint2)
+                addQuadCurve(to: previousPoint, controlPoint: previousControlPoint2)
                 
             case 2 ..< points.count - 1 :
                 
-                addCurveToPoint(previousPoint, controlPoint1: previousControlPoint1, controlPoint2: previousControlPoint2)
+                addCurve(to: previousPoint, controlPoint1: previousControlPoint1, controlPoint2: previousControlPoint2)
                 
             case points.count - 1 :
                 
-                addCurveToPoint(previousPoint, controlPoint1: previousControlPoint1, controlPoint2: previousControlPoint2)
-                addQuadCurveToPoint(pointI, controlPoint: controlPoint1)
+                addCurve(to: previousPoint, controlPoint1: previousControlPoint1, controlPoint2: previousControlPoint2)
+                addQuadCurve(to: pointI, controlPoint: controlPoint1)
                 
             default:
                 break
@@ -95,7 +95,7 @@ extension UIBezierPath {
     }
 }
 
-func ObliqueAngleOfStraightThrough(#point1: CGPoint, #point2: CGPoint) -> CGFloat {    //  [-π/2, 3π/2)
+func ObliqueAngleOfStraightThrough(point1: CGPoint, point2: CGPoint) -> CGFloat {    //  [-π/2, 3π/2)
 
     var obliqueRatio: CGFloat = 0
     var obliqueAngle: CGFloat = 0
@@ -108,20 +108,20 @@ func ObliqueAngleOfStraightThrough(#point1: CGPoint, #point2: CGPoint) -> CGFloa
     else if (point1.x < point2.x) {
         
         obliqueRatio = (point2.y - point1.y) / (point2.x - point1.x)
-        obliqueAngle = CGFloat(M_PI) + atan(obliqueRatio)
+        obliqueAngle = CGFloat(Double.pi) + atan(obliqueRatio)
     }
     else if (point2.y - point1.y >= 0) {
         
-        obliqueAngle = CGFloat(M_PI)/2
+        obliqueAngle = CGFloat(Double.pi)/2
     }
     else {
-        obliqueAngle = -CGFloat(M_PI)/2
+        obliqueAngle = -CGFloat(Double.pi)/2
     }
     
     return obliqueAngle
 }
 
-func ControlPointForTheBezierCanThrough(#point1: CGPoint, #point2: CGPoint, #point3: CGPoint) -> CGPoint {
+func ControlPointForTheBezierCanThrough(point1: CGPoint, point2: CGPoint, point3: CGPoint) -> CGPoint {
     
     return CGPoint(x: (2 * point2.x - (point1.x + point3.x) / 2), y: (2 * point2.y - (point1.y + point3.y) / 2));
 }

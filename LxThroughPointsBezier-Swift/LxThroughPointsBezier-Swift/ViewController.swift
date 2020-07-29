@@ -18,13 +18,13 @@ class ViewController: UIViewController {
         slider.minimumValue = 0
         slider.maximumValue = 1.4
         slider.value = 0.7
-        slider.addTarget(self, action: "sliderValueChanged:", forControlEvents: .ValueChanged)
+        slider.addTarget(self, action: #selector(sliderValueChanged(slider:)), for: .valueChanged)
         view.addSubview(slider)
         
-        slider.setTranslatesAutoresizingMaskIntoConstraints(false)
+        slider.translatesAutoresizingMaskIntoConstraints = false
         
-        let sliderHorizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[slider]-|", options: .DirectionLeadingToTrailing, metrics: nil, views: ["slider":slider])
-        let sliderVerticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-topMargin-[slider(==sliderHeight)]", options: .DirectionLeadingToTrailing, metrics: ["sliderHeight":6, "topMargin":60], views: ["slider":slider])
+        let sliderHorizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[slider]-|", options: .directionLeadingToTrailing, metrics: nil, views: ["slider":slider])
+        let sliderVerticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-topMargin-[slider(==sliderHeight)]", options: .directionLeadingToTrailing, metrics: ["sliderHeight":6, "topMargin":60], views: ["slider":slider])
         
         view.addConstraints(sliderHorizontalConstraints)
         view.addConstraints(sliderVerticalConstraints)
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
             pointView.center = CGPoint(x: i * 60 + 30, y: 420)
             pointView.dragCallBack = { [unowned self] (pointView: PointView) -> Void in
             
-                self.sliderValueChanged(slider)
+                self.sliderValueChanged(slider: slider)
             }
             view.addSubview(pointView)
             _pointViewArray.append(pointView)
@@ -45,23 +45,23 @@ class ViewController: UIViewController {
             pointArray.append(pointView.center)
         }
         
-        _curve.moveToPoint(_pointViewArray.first!.center)
+        _curve.move(to: _pointViewArray.first!.center)
         _curve.addBezierThrough(points: pointArray)
         
-        _shapeLayer.strokeColor = UIColor.blueColor().CGColor
+        _shapeLayer.strokeColor = UIColor.blue.cgColor
         _shapeLayer.fillColor = nil
         _shapeLayer.lineWidth = 3
-        _shapeLayer.path = _curve.CGPath
-        _shapeLayer.lineCap = kCALineCapRound
+        _shapeLayer.path = _curve.cgPath
+        _shapeLayer.lineCap = CAShapeLayerLineCap.round
         view.layer.addSublayer(_shapeLayer)
     }
     
-    func sliderValueChanged(slider: UISlider) {
+    @objc func sliderValueChanged(slider: UISlider) {
     
         _curve.removeAllPoints()
         _curve.contractionFactor = CGFloat(slider.value)
         
-        _curve.moveToPoint(_pointViewArray.first!.center)
+        _curve.move(to: _pointViewArray.first!.center)
         
         var pointArray = [CGPoint]()
         for pointView in _pointViewArray {
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         }
         _curve.addBezierThrough(points: pointArray)
         
-        _shapeLayer.path = _curve.CGPath
+        _shapeLayer.path = _curve.cgPath
     }
 }
 
